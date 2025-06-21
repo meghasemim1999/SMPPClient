@@ -504,7 +504,7 @@ namespace BSN.SmppClient
         /// <param name="submitSm"></param>
         /// <param name="submitSmResp"></param>
         /// <returns> 1 - Successful / 0 - Failed </returns>
-        public int SendMessage(string phoneNumber, string serviceType, Ton sourceTon, Npi sourceNpi, DataCodings submitDataCoding, DataCodings encodeDataCoding, string message,  out SubmitSm submitSm, out SubmitSmResp submitSmResp)
+        public int SendMessage(string phoneNumber, string serviceType, Ton sourceTon, Npi sourceNpi, Ton destTon, Npi destNpi, DataCodings submitDataCoding, DataCodings encodeDataCoding, string message,  out SubmitSm submitSm, out SubmitSmResp submitSmResp)
         {
             int retVal = 0;
 
@@ -524,7 +524,7 @@ namespace BSN.SmppClient
                 }
 
                 // Send the message
-                retVal = smppConnection.SendMessage(phoneNumber, serviceType, sourceTon, sourceNpi, submitDataCoding, encodeDataCoding, message, out submitSm, out submitSmResp);
+                retVal = smppConnection.SendMessage(phoneNumber, serviceType, sourceTon, sourceNpi, destTon, destNpi, submitDataCoding, encodeDataCoding, message, out submitSm, out submitSmResp);
             }
 
             catch (Exception exception)

@@ -1,0 +1,6 @@
+@SmppApi_HostAddress = http://localhost:5285
+
+GET {{SmppApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -107,7 +107,7 @@ namespace SmppTestClient
 
             // There is a default encoding set for each connection. This is used if the encodeDataCoding is Default
 
-            connectionManager.SendMessage(phoneNumber, null, Ton.National, Npi.ISDN, submitDataCoding, encodeDataCoding, message, out SubmitSm submitSm, out SubmitSmResp submitSmResp);
+            connectionManager.SendMessage(phoneNumber, null, Ton.NetworkSpecific, Npi.Unknown,Ton.National, Npi.ISDN, submitDataCoding, encodeDataCoding, message, out SubmitSm submitSm, out SubmitSmResp submitSmResp);
             Console.Write("submitSm:{0}, submitSmResp:{1}, messageId:{2}", submitSm.DestAddr, submitSmResp.Status, submitSmResp.MessageId);
         }
 

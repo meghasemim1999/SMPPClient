@@ -670,7 +670,7 @@ namespace BSN.SmppClient
         /// <param name="submitSm"></param>
         /// <param name="submitSmResp"></param>
         /// <returns> 0 - Successful / 1 - Failed / 2 - Not Connected </returns>
-        public int SendMessage(string phoneNumber, string serviceType, Ton destinationTon, Npi destinationNpi, DataCodings submitDataCoding, DataCodings encodeDataCoding, string message, out SubmitSm submitSm, out SubmitSmResp submitSmResp)
+        public int SendMessage(string phoneNumber, string serviceType, Ton sourceTon, Npi sourceNpi, Ton destinationTon, Npi destinationNpi, DataCodings submitDataCoding, DataCodings encodeDataCoding, string message, out SubmitSm submitSm, out SubmitSmResp submitSmResp)
         {
             int retVal = 1;
 
@@ -716,8 +716,10 @@ namespace BSN.SmppClient
                 submitSm = Client.PrepareSubmit(
                     SubmitMode.ShortMessage,
                     serviceType,
-                    (byte) Ton.NetworkSpecific,
-                    (byte) Npi.Unknown,
+                    //(byte) Ton.NetworkSpecific,
+                    (byte) sourceTon,
+                    //(byte) Npi.Unknown,
+                    (byte) sourceNpi,
                     ShortLongCode,
                     (byte) destinationTon,
                     (byte) destinationNpi,
